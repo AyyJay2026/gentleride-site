@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Gentle Ride Help</title>
+<meta name="description" content="How to use Gentle Ride, tips for better alerts, answers to common questions and how to get in touch.">
+<meta name="theme-color" content="#16202a">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@500;600;700&family=Atkinson+Hyperlegible:wght@400;700&display=swap">
+<style>
+/* Same color tokens and fonts as the app (index.html). */
+:root {
+  --bg: #eef1f3; --surface: #ffffff; --line: #d5dbe0; --fg: #16202a; --muted: #5b6874;
+  --accent: #2563a8; --accent-fg: #ffffff;
+  --smooth: #1f8a4c; --moderate: #b7791f; --abrupt: #c53030;
+  --smooth-bg: #e3f4ea; --moderate-bg: #fbf0dc; --abrupt-bg: #fbe4e4; --info-bg: #e2ecf7;
+  --font-display: "Barlow Semi Condensed", "Arial Narrow", system-ui, sans-serif;
+  --font-body: "Atkinson Hyperlegible", system-ui, -apple-system, sans-serif;
+  --radius: 14px;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #0f151b; --surface: #18212a; --line: #2a3642; --fg: #e8edf1; --muted: #93a1ae;
+  --accent: #5b9be0; --accent-fg: #0b1218;
+  --smooth: #46c27a; --moderate: #e2a843; --abrupt: #f06464;
+  --smooth-bg: #12301f; --moderate-bg: #33270f; --abrupt-bg: #3a1717; --info-bg: #142538;
+  color-scheme: dark;
+} }
+:root[data-theme="dark"] {
+  --bg: #0f151b; --surface: #18212a; --line: #2a3642; --fg: #e8edf1; --muted: #93a1ae;
+  --accent: #5b9be0; --accent-fg: #0b1218;
+  --smooth: #46c27a; --moderate: #e2a843; --abrupt: #f06464;
+  --smooth-bg: #12301f; --moderate-bg: #33270f; --abrupt-bg: #3a1717; --info-bg: #142538;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+:root { padding-top: env(safe-area-inset-top, 0px); }
+body {
+  background: var(--bg); color: var(--fg); font: 16px/1.5 var(--font-body);
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 12px calc(32px + env(safe-area-inset-bottom, 0px));
+  overflow-wrap: break-word;
+}
+main { max-width: 640px; margin: 0 auto; display: grid; gap: 14px; }
+h1, h2, h3 { font-family: var(--font-display); font-weight: 700; margin: 0; text-wrap: balance; }
+h1 { font-size: 1.6rem; letter-spacing: 0.02em; }
+h2 { font-size: 1.3rem; }
+h3 { font-size: 1.1rem; }
+p { margin: 0; }
+a { color: var(--accent); font-weight: 700; }
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+.brand { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+.brand a { font-family: var(--font-display); font-size: 1.05rem; letter-spacing: 0.04em; text-decoration: none; }
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 16px; display: grid; gap: 10px; min-width: 0; }
+.muted { color: var(--muted); }
+ul { margin: 0; padding-left: 22px; display: grid; gap: 6px; }
+.steps { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; counter-reset: step; }
+.steps li { display: grid; grid-template-columns: 34px 1fr; gap: 10px; align-items: start; counter-increment: step; }
+.steps li::before {
+  content: counter(step); display: grid; place-items: center; width: 34px; height: 34px; border-radius: 999px;
+  background: var(--accent); color: var(--accent-fg); font-family: var(--font-display); font-weight: 700; font-size: 1.15rem;
+}
+.banner { border-radius: 12px; padding: 12px 14px; font-size: 0.95rem; border: 1px solid transparent; background: var(--info-bg); }
+.banner.warn { background: var(--moderate-bg); border-color: var(--moderate); }
+.btn { display: block; text-align: center; text-decoration: none; border-radius: 12px; padding: 14px 16px; background: var(--accent); color: var(--accent-fg); border: 1px solid var(--accent);
+  font-family: var(--font-display); font-weight: 700; font-size: 1.2rem; letter-spacing: 0.06em; }
+.pill { display: inline-block; font-family: var(--font-display); font-weight: 700; letter-spacing: 0.06em; font-size: 0.85rem; padding: 1px 9px; border-radius: 999px; background: var(--line); color: var(--muted); white-space: nowrap; }
+.pill.red { background: var(--abrupt-bg); color: var(--abrupt); }
+.pill.amber { background: var(--moderate-bg); color: var(--moderate); }
+.faq { display: grid; gap: 0; }
+.faq details { border-top: 1px solid var(--line); padding: 10px 0; }
+.faq details:first-of-type { border-top: none; padding-top: 0; }
+.faq summary { cursor: pointer; font-weight: 700; list-style: none; display: flex; justify-content: space-between; gap: 12px; }
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after { content: "▸"; color: var(--muted); flex: none; }
+.faq details[open] summary::after { content: "▾"; }
+.faq details > :not(summary) { margin-top: 8px; }
+.foot { font-size: 0.9rem; color: var(--muted); display: flex; gap: 16px; flex-wrap: wrap; justify-content: center; padding-top: 4px; }
+.placeholder { background: var(--moderate-bg); border-radius: 4px; padding: 0 4px; }
+</style>
+</head>
+<body>
+<main>
+  <header class="brand">
+    <h1>GENTLE RIDE</h1>
+    <a href="./">← Back to the app</a>
+  </header>
+
+  <section class="card">
+    <h2>Help &amp; support</h2>
+    <p>Gentle Ride coaches you to drive more smoothly, so your passengers ride more comfortably. It listens to your phone's motion sensors and gives a gentle alert when braking, acceleration or a lift-off jolt gets abrupt. No GPS, no account and no connection to your car.</p>
+    <div class="banner warn"><b>Safety first.</b> Set the phone up before you drive and don't handle it while moving. A passenger can tap the buttons. Always brake as hard as the road needs; Gentle Ride never sounds during very hard braking (the screen just turns solid red for a moment).</div>
+  </section>
+
+  <section class="card" id="safety">
+    <h2>Driving safely</h2>
+    <ul>
+      <li><b>Set it up before you drive.</b> Don't touch the phone while the car is moving: let a passenger do it, or wait until you're parked.</li>
+      <li><b>Never text, read or use your phone while driving.</b></li>
+      <li><b>Keep your eyes on the road</b> and stay aware of your surroundings. Alerts are a gentle nudge, never a reason to look at the screen.</li>
+      <li><b>Always brake as hard as the road needs.</b> Gentle Ride stays quiet during very hard braking.</li>
+      <li><b>For the best results, put the phone where it can't slide around</b> or block your view, airbags or controls.</li>
+      <li><b>Follow your local laws</b> about phones in cars.</li>
+      <li>Gentle Ride is a coaching aid. <b>You're always responsible for driving safely.</b></li>
+    </ul>
+  </section>
+
+  <section class="card">
+    <h2>How to use it</h2>
+    <ol class="steps">
+      <li><div><b>Place the phone.</b> Lay it on your car's wireless charging pad, pushed fully into the slot, or use a firm dash mount. Any orientation works: flat, upright, portrait or landscape.</div></li>
+      <li><div><b>Tap Start.</b> The screen stays on while Gentle Ride is monitoring. In the web app, tap <b>Allow</b> when your browser asks for motion access (on iPhone, Safari, Chrome and other browsers all ask; on Android it's usually allowed already).</div></li>
+      <li><div><b>Drive normally.</b> The dashboard says <span class="pill">GETTING READY</span> at first. Your first turn, or pulling away from a stop, shows Gentle Ride which way the car faces. After that it monitors on its own and remembers the direction for next time.</div></li>
+      <li><div><b>Tap Stop when you arrive.</b> You'll see a smoothness score out of 100 and a timeline of events. Past trips are in Trip History.</div></li>
+    </ol>
+  </section>
+
+  <section class="card">
+    <h2>What the alerts mean</h2>
+    <ul>
+      <li><b>Every sound works like a parking radar:</b> silent while you drive smoothly. As braking or acceleration gets more abrupt it starts repeating, then faster, louder and higher. Ease off until it goes quiet.</li>
+      <li><b>Pick the sound</b> in Settings → Alerts: radar ticks (the default), a soft beep, chime, ukulele strum, a voice saying "Easy now", or your own recorded word (web app).</li>
+      <li><b>Screen flash:</b> <span class="pill red">RED</span> for abrupt braking, abrupt acceleration and lift-off jolts; <span class="pill amber">AMBER</span> for jerky changes, on/off pedal pumping and stop-and-go sway. You can turn it off.</li>
+      <li><b>Stop-and-go sway:</b> in bumper-to-bumper traffic, the go / lift-off / regen rhythm rocks passengers slowly forward and back. That slow sway is one of the strongest causes of carsickness, even when no single moment is abrupt. When it keeps rocking back and forth (several times within half a minute; a single stop doesn't count), Gentle Ride plays your sound once (at most once a minute). Leave a bigger gap and roll at a steady crawl instead of going and stopping; in an EV, ease off the pedal gradually so the regen fades in.</li>
+    </ul>
+    <p>Gentle Ride looks for abrupt braking, sudden "lift-off" slowing in electric cars with regenerative braking, jerky changes, heavy acceleration, speeding up and slowing down over and over, and the slow sway of stop-and-go traffic.</p>
+  </section>
+
+  <section class="card">
+    <h2>Tips</h2>
+    <ul>
+      <li><b>Silent switch:</b> the iPhone app plays alerts even with the silent switch on. In the web app, alerts mix into your music, so the silent switch mutes them. Turn the switch off while you drive.</li>
+      <li><b>Volume:</b> alerts follow your phone's volume, so turn it up with the side buttons. Use <b>Play sample</b> in Settings to check the level. Music and navigation keep playing.</li>
+      <li><b>Vent mounts vibrate.</b> Clips on air vents bounce over every bump, which adds noise. The charging pad or a firm dash mount works much better.</li>
+      <li><b>Grippy case:</b> on a charging pad, a slick case can let the phone slide or spin. If it just tips a little, Gentle Ride adjusts and carries on; if it moves more, it re-learns the direction automatically (no readings for that minute or so).</li>
+      <li><b>Too many or too few alerts?</b> Under Settings → How strict? choose Relaxed, Balanced or Strict. Strict suits very sensitive passengers.</li>
+      <li><b>Keep it in front.</b> Leave Gentle Ride open on screen. If you switch apps or lock the phone, monitoring pauses.</li>
+    </ul>
+  </section>
+
+  <section class="card faq">
+    <h2 style="margin-bottom:10px">Questions</h2>
+
+    <details>
+      <summary>Why didn't it beep?</summary>
+      <ul>
+        <li><b>Very hard braking never sounds.</b> That's on purpose: in an emergency you should brake as hard as you need without a distraction, so the screen just turns solid red for a second. (If you build up to it over a second or more, you may hear one alert on the way.) It lowers your score like abrupt braking does.</li>
+        <li>It may still be <b>getting ready</b>. Alerts start after it has learned which way the car faces.</li>
+        <li>Normal driving is meant to stay quiet. Try <b>Strict</b> if you want alerts sooner.</li>
+        <li>Check the <b>volume</b>, the <b>silent switch</b> (web app), and that Sound isn't set to "No sound".</li>
+        <li>If the phone is shaking a lot, jolt alerts pause until it settles. A firmer mount helps.</li>
+      </ul>
+    </details>
+
+    <details>
+      <summary>Why does it say "Getting ready"?</summary>
+      <p>Gentle Ride works out which way is forward from how the car moves, so you can put the phone in any position. It needs one turn or one pull-away from a stop. Just keep driving normally. It remembers the direction for next time and keeps checking it, so if you move the phone it re-learns on its own.</p>
+    </details>
+
+    <details>
+      <summary>Why does the screen stay on? What about battery?</summary>
+      <p>iPhone pauses motion sensors for apps in the background or when the screen locks, so Gentle Ride keeps the screen on while it's monitoring. That uses more battery, so charge while you drive: the wireless pad or a cable is ideal. The screen can lock normally again once you tap Stop.</p>
+    </details>
+
+    <details>
+      <summary>Does it work in the background?</summary>
+      <p>No. Gentle Ride only monitors while it's open on screen. If you switch to another app, monitoring pauses until you come back.</p>
+    </details>
+
+    <details>
+      <summary>Does it use GPS, the internet or my car's data?</summary>
+      <p>It measures with the phone's motion sensors. It also reads the car's <b>speed</b> from GPS (so gentle slowing for speed bumps and parking counts less, and in the iPhone app so a drive keeps going when you switch apps), which is why it needs location permission: a trip won't start without it. It never records or shares where you are. It doesn't need an internet connection, doesn't connect to your car, and you don't need an account.</p>
+    </details>
+
+    <details>
+      <summary>What about my privacy?</summary>
+      <p>Gentle Ride doesn't collect any data. Your trips stay on your phone, and a trip only leaves the phone if you tap Share and send it somewhere. It never records your location (it reads only the car's speed). Read the full <a href="privacy.html">privacy policy</a>.</p>
+    </details>
+
+    <details>
+      <summary>How do I delete trips?</summary>
+      <p>In the iPhone app, open Trip History and swipe left on a trip. In the web app, open Trips, tap a trip, then tap Delete trip. Deleting the app removes everything.</p>
+    </details>
+
+    <details>
+      <summary>What does the score mean?</summary>
+      <p>The smoothness score (0–100) goes down for abrupt moments: hardly at all for a jolt just over the line (like slowing for a speed bump), more for a big one. Keep driving smoothly and it climbs back toward 100, but the higher it is, the slower it climbs: per minute of smooth driving it gains 9 points below 60, 6 in the 60s, 3 in the 70s, 1½ in the 80s, ¾ from 90 to 95 and about ½ from 96 up (a bit slower on Strict), up to half of what each moment cost: the other half stays. On drives longer than 10 minutes of moving, the score is also a rate per 10 minutes of driving, so the longer you drive, the less a bad moment weighs. Time parked doesn't count: after 2 minutes stopped, the trip's clock pauses and Gentle Ride asks whether to stop the trip. Stop-and-go sway costs a little for every moment it goes on, more the stronger it is. A stop's sudden start and its braking count as one moment. The trip's score is where it ends. It's judged at the alert level you pick: the same drive scores lower on Strict and higher on Relaxed. It's a habit tracker to help you see progress. It isn't a medical measure, and it can't tell how any particular passenger will feel.</p>
+    </details>
+
+    <details>
+      <summary>Which cars does it work with?</summary>
+      <p>Any car. It's especially handy in electric cars with strong regenerative braking, where lifting off the pedal too quickly can jolt passengers.</p>
+    </details>
+
+    <details>
+      <summary>Can I try it without driving?</summary>
+      <p>Yes. The <a href="./">web app</a> has a "Try a demo drive" button that plays a simulated city drive, so you can hear the alerts and see a trip summary.</p>
+    </details>
+  </section>
+
+  <section class="card">
+    <h2>Contact</h2>
+    <p>Found a bug or have an idea? Email <a href="mailto:support@gentleride.app">support@gentleride.app</a>. It helps to include your iPhone model, iOS version and what happened. If a trip went wrong, you can attach its file from the trip's Share button.</p>
+  </section>
+
+  <a class="btn" href="./">OPEN GENTLE RIDE</a>
+
+  <footer class="foot">
+    <a href="./">Back to the app</a>
+    <a href="privacy.html">Privacy policy</a>
+  </footer>
+</main>
+</body>
+</html>

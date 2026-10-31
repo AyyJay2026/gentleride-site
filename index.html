@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Gentle Ride</title>
+<meta name="description" content="Gentle Ride is a driving coach for people who carry passengers: a soft tick when braking or acceleration gets abrupt, so you can ease off and give everyone a smoother ride. Coming soon to the App Store.">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@500;600;700&family=Atkinson+Hyperlegible:wght@400;700&display=swap">
+<style>
+/* Same color tokens and fonts as the app and the privacy/support pages. */
+:root {
+  --bg: #eef1f3; --surface: #ffffff; --line: #d5dbe0; --fg: #16202a; --muted: #5b6874;
+  --accent: #2563a8; --accent-fg: #ffffff;
+  --smooth: #1f8a4c; --moderate: #b7791f; --abrupt: #c53030;
+  --smooth-bg: #e3f4ea; --moderate-bg: #fbf0dc; --abrupt-bg: #fbe4e4; --info-bg: #e2ecf7;
+  --font-display: "Barlow Semi Condensed", "Arial Narrow", system-ui, sans-serif;
+  --font-body: "Atkinson Hyperlegible", system-ui, -apple-system, sans-serif;
+  --radius: 14px;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #0f151b; --surface: #18212a; --line: #2a3642; --fg: #e8edf1; --muted: #93a1ae;
+  --accent: #5b9be0; --accent-fg: #0b1218;
+  --smooth: #46c27a; --moderate: #e2a843; --abrupt: #f06464;
+  --smooth-bg: #12301f; --moderate-bg: #33270f; --abrupt-bg: #3a1717; --info-bg: #142538;
+  color-scheme: dark;
+} }
+:root[data-theme="dark"] {
+  --bg: #0f151b; --surface: #18212a; --line: #2a3642; --fg: #e8edf1; --muted: #93a1ae;
+  --accent: #5b9be0; --accent-fg: #0b1218;
+  --smooth: #46c27a; --moderate: #e2a843; --abrupt: #f06464;
+  --smooth-bg: #12301f; --moderate-bg: #33270f; --abrupt-bg: #3a1717; --info-bg: #142538;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+:root { padding-top: env(safe-area-inset-top, 0px); }
+body {
+  background: var(--bg); color: var(--fg); font: 16px/1.5 var(--font-body);
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 12px calc(32px + env(safe-area-inset-bottom, 0px));
+  overflow-wrap: break-word;
+}
+main { max-width: 640px; margin: 0 auto; display: grid; gap: 14px; }
+h1, h2 { font-family: var(--font-display); font-weight: 700; margin: 0; text-wrap: balance; }
+h1 { font-size: 2.2rem; letter-spacing: 0.02em; line-height: 1.1; }
+h2 { font-size: 1.3rem; }
+p { margin: 0; }
+a { color: var(--accent); font-weight: 700; }
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 16px; display: grid; gap: 10px; min-width: 0; }
+.hero { display: grid; grid-template-columns: auto 1fr; gap: 16px; align-items: center; padding: 20px 16px; }
+.hero img { width: 88px; height: 88px; border-radius: 20px; box-shadow: 0 2px 10px rgb(0 0 0 / .12); }
+.tagline { font-family: var(--font-display); font-size: 1.2rem; font-weight: 600; color: var(--smooth); }
+.lede { border-color: var(--smooth); border-width: 2px; background: var(--smooth-bg); }
+.muted { color: var(--muted); }
+.label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); font-weight: 700; }
+ul { margin: 0; padding-left: 22px; display: grid; gap: 6px; }
+.yes li::marker { content: "✓  "; color: var(--smooth); }
+.store { display: inline-flex; align-items: center; gap: 10px; justify-self: start; background: var(--fg); color: var(--bg); border-radius: 12px; padding: 10px 18px; font-weight: 700; text-decoration: none; }
+.store small { display: block; font-weight: 400; font-size: .75rem; opacity: .8; }
+.foot { font-size: 0.9rem; color: var(--muted); display: flex; gap: 16px; flex-wrap: wrap; justify-content: center; padding-top: 4px; }
+@media (max-width: 420px) { .hero { grid-template-columns: 1fr; } h1 { font-size: 1.9rem; } }
+</style>
+</head>
+<body>
+<main>
+  <section class="card hero">
+    <img src="icon-512.png" alt="Gentle Ride app icon">
+    <div style="display:grid;gap:6px">
+      <h1>GENTLE RIDE</h1>
+      <p class="tagline">Smooth braking, happy riders</p>
+    </div>
+  </section>
+
+  <section class="card lede">
+    <p>Gentle Ride is a driving coach for people who carry passengers. It gives you a gentle, real-time cue when your driving gets abrupt, so you can ease off and give everyone a smoother, more comfortable ride.</p>
+    <p>Put your phone on the charging pad or a firm mount, tap Start and drive. That's it.</p>
+    <span class="store" aria-label="Coming soon to the App Store">
+      <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M16.37 12.6c-.02-2.2 1.8-3.26 1.88-3.31-1.03-1.5-2.62-1.7-3.18-1.73-1.35-.14-2.64.8-3.33.8-.69 0-1.74-.78-2.86-.76-1.47.02-2.83.86-3.59 2.17-1.53 2.66-.39 6.6 1.1 8.75.73 1.05 1.6 2.24 2.73 2.2 1.1-.05 1.51-.71 2.84-.71 1.32 0 1.7.71 2.86.69 1.18-.02 1.93-1.07 2.65-2.13.84-1.22 1.18-2.4 1.2-2.46-.03-.01-2.29-.88-2.3-3.51zM14.2 6.13c.6-.74 1.01-1.75.9-2.77-.87.04-1.93.58-2.55 1.31-.56.65-1.05 1.69-.92 2.69.97.08 1.97-.49 2.57-1.23z"/></svg>
+      <span><small>Coming soon to the</small>App Store</span>
+    </span>
+  </section>
+
+  <section class="card">
+    <h2>How it helps</h2>
+    <ul class="yes">
+      <li>A soft "radar" tick: silent while you drive smoothly, then ticking faster and higher as braking or acceleration gets more abrupt. Ease off until it goes quiet.</li>
+      <li>Prefer something else? Choose a voice, a soft beep, chime or ukulele strum, plus an optional screen flash.</li>
+      <li>Alerts mix with your music and navigation.</li>
+    </ul>
+  </section>
+
+  <section class="card">
+    <h2>What it notices</h2>
+    <ul class="yes">
+      <li>Abrupt braking</li>
+      <li>Lift-off jolts: the sudden slowing when you come off the pedal too quickly in an electric car with strong regenerative braking (one-pedal driving)</li>
+      <li>Jerky changes in speed</li>
+      <li>Heavy acceleration (optional)</li>
+      <li>On/off pedal pumping: speeding up and slowing down over and over</li>
+    </ul>
+  </section>
+
+  <section class="card">
+    <h2>Track your progress</h2>
+    <ul class="yes">
+      <li>A smoothness score from 0 to 100 for every trip</li>
+      <li>A timeline of each trip's events, and your trip history</li>
+      <li>Relaxed, Balanced and Strict settings, to match how sensitive your passengers are</li>
+    </ul>
+  </section>
+
+  <section class="card">
+    <h2>Private by design</h2>
+    <ul class="yes">
+      <li>No account, no sign-in, no ads, no analytics, no tracking.</li>
+      <li>Nothing is uploaded. Your trips stay on your phone.</li>
+      <li>GPS is used only for speed, never your location.</li>
+    </ul>
+  </section>
+
+  <section class="card">
+    <h2>Safety first</h2>
+    <p>Gentle Ride never alerts during very hard, emergency-style braking. Always brake as hard as the road needs. Set it up before you drive, and never text or use your phone while driving. Alerts are sounds, so there's no need to look at the screen.</p>
+    <p class="muted">Gentle Ride isn't a medical device and doesn't diagnose, prevent or treat any condition.</p>
+  </section>
+
+  <nav class="foot" aria-label="More">
+    <a href="support.html">Help &amp; support</a>
+    <a href="privacy.html">Privacy policy</a>
+    <a href="mailto:support@gentleride.app">support@gentleride.app</a>
+  </nav>
+</main>
+</body>
+</html>
